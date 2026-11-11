@@ -12,10 +12,36 @@ import {
   X,
   Building2,
   Globe,
-  Trash2
+  Trash2,
+  Lock,
+  KeyRound
 } from "lucide-react";
 
 export default function AdminDashboard() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [passcode, setPasscode] = useState("");
+  const [authError, setAuthError] = useState(false);
+
+  // Check local session on mount
+  useEffect(() => {
+    const session = sessionStorage.getItem("kacco_admin_auth");
+    if (session === "true") {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Set your secure admin password here
+    if (passcode === "KACCO2026") {
+      setIsAuthenticated(true);
+      sessionStorage.setItem("kacco_admin_auth", "true");
+      setAuthError(false);
+    } else {
+      setAuthError(true);
+    }
+  };
+
   const [activeTab, setActiveTab] = useState("posts");
 
   // Persistent State with localStorage
@@ -118,6 +144,56 @@ export default function AdminDashboard() {
     s.district.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // LOGIN SCREEN IF NOT AUTHENTICATED
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4 font-sans">
+        <div className="bg-white rounded-3xl max-w-md w-full p-8 space-y-6 shadow-2xl border border-slate-800">
+          <div className="text-center space-y-2">
+            <div className="w-14 h-14 bg-sky-100 text-sky-600 rounded-2xl mx-auto flex items-center justify-center shadow-inner">
+              <Lock className="w-7 h-7" />
+            </div>
+            <h1 className="text-2xl font-black text-slate-900">KACCO Admin Portal</h1>
+            <p className="text-xs text-slate-500">Enter your secure administrator passcode to continue.</p>
+          </div>
+
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Passcode</label>
+              <div className="relative">
+                <KeyRound className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
+                <input 
+                  type="password" 
+                  value={passcode}
+                  onChange={(e) => setPasscode(e.target.value)}
+                  placeholder="Enter admin passcode..." 
+                  required
+                  className="w-full pl-10 pr-4 py-3 text-sm border border-slate-300 rounded-xl focus:outline-none focus:border-sky-500 font-bold"
+                />
+              </div>
+              {authError && (
+                <p className="text-xs text-rose-600 font-bold mt-2">Incorrect passcode. Default code is KACCO2026</p>
+              )}
+            </div>
+
+            <button 
+              type="submit" 
+              className="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-bold text-sm rounded-xl transition shadow-md"
+            >
+              Access Control Panel
+            </button>
+          </form>
+
+          <div className="text-center pt-2 border-t border-slate-100">
+            <a href="/" className="text-xs font-bold text-slate-500 hover:text-sky-600 transition">
+              ← Return to Public Website
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-slate-100 flex flex-col md:flex-row font-sans text-slate-800">
       <AdminSidebar />
@@ -133,24 +209,33 @@ export default function AdminDashboard() {
             </p>
           </div>
 
-          <div className="flex bg-slate-200 p-1 rounded-xl text-xs font-semibold overflow-x-auto">
+          <div className="flex items-center gap-3">
+            <div className="flex bg-slate-200 p-1 rounded-xl text-xs font-semibold overflow-x-auto">
+              <button 
+                onClick={() => setActiveTab("posts")} 
+                className={`px-3 py-2 rounded-lg transition ${activeTab === "posts" ? "bg-white text-sky-700 shadow-sm font-bold" : "text-slate-600"}`}
+              >
+                News & Posts
+              </button>
+              <button 
+                onClick={() => setActiveTab("students")} 
+                className={`px-3 py-2 rounded-lg transition ${activeTab === "students" ? "bg-white text-sky-700 shadow-sm font-bold" : "text-slate-600"}`}
+              >
+                Students
+              </button>
+              <button 
+                onClick={() => setActiveTab("clinic")} 
+                className={`px-3 py-2 rounded-lg transition ${activeTab === "clinic" ? "bg-white text-sky-700 shadow-sm font-bold" : "text-slate-600"}`}
+              >
+                Clinic & Stats
+              </button>
+            </div>
             <button 
-              onClick={() => setActiveTab("posts")} 
-              className={`px-3 py-2 rounded-lg transition ${activeTab === "posts" ? "bg-white text-sky-700 shadow-sm font-bold" : "text-slate-600"}`}
+              onClick={() => { sessionStorage.removeItem("kacco_admin_auth"); setIsAuthenticated(false); }}
+              className="px-3 py-2 bg-rose-50 text-rose-600 border border-rose-200 rounded-xl text-xs font-bold hover:bg-rose-100 transition"
+              title="Lock Session"
             >
-              News & Posts
-            </button>
-            <button 
-              onClick={() => setActiveTab("students")} 
-              className={`px-3 py-2 rounded-lg transition ${activeTab === "students" ? "bg-white text-sky-700 shadow-sm font-bold" : "text-slate-600"}`}
-            >
-              Students
-            </button>
-            <button 
-              onClick={() => setActiveTab("clinic")} 
-              className={`px-3 py-2 rounded-lg transition ${activeTab === "clinic" ? "bg-white text-sky-700 shadow-sm font-bold" : "text-slate-600"}`}
-            >
-              Clinic & Stats
+              Lock
             </button>
           </div>
         </div>
@@ -553,7 +638,7 @@ export default function AdminDashboard() {
                 <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Education Level</label>
                 <input 
                   type="text" 
-                  value={editingStudent.level} 
+                  value={testingStudentLevel(editingStudent.level)} 
                   onChange={(e) => setEditingStudent({...editingStudent, level: e.target.value})}
                   required
                   className="w-full p-3 text-sm border border-slate-300 rounded-xl focus:outline-none focus:border-sky-500"
@@ -606,4 +691,8 @@ export default function AdminDashboard() {
       )}
     </div>
   );
+}
+
+function testingStudentLevel(val: string) {
+  return val;
 }
