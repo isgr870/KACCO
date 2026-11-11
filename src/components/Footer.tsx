@@ -14,7 +14,7 @@ export default function Footer() {
             <span className="font-black text-white text-lg tracking-tight">KACCO</span>
           </div>
           <p className="text-xs text-slate-400 leading-relaxed">
-            Karamoja Child Care Organization empowers children, youth, and communities across Moroto and Napak districts[span_0](start_span)[span_0](end_span).
+            Karamoja Child Care Organization empowers children, youth, and communities across Moroto and Napak districts.
           </p>
           <div className="text-[11px] text-emerald-400 font-bold flex items-center gap-1.5">
             <ShieldCheck className="w-4 h-4" /> Child Safeguarding Policy Active
