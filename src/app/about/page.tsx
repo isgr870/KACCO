@@ -1,61 +1,77 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import { Target, ShieldCheck, HeartHandshake, Mail, PhoneCall } from "lucide-react";
+"use client";
+
+import React from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { ShieldCheck, Heart, Eye, Target, Award, CheckCircle2 } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-800 flex flex-col">
       <Navbar />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12 flex-grow">
+
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12 w-full">
+        {/* Title */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-sky-600 font-bold uppercase tracking-wider text-xs bg-sky-50 px-3 py-1 rounded-full border border-sky-200">
-            About KACCO
-          </span>
-          <h1 className="text-4xl font-black text-slate-900">Karamoja Child Care Organization</h1>
-          <p className="text-slate-600 text-lg leading-relaxed">
-            We are a registered Community Based Organization (CBO) committed to uplifting vulnerable children, youth, and families across the Karamoja sub-region.
-          </p>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-100 text-sky-800 text-xs font-bold uppercase tracking-wider">
+            <ShieldCheck className="w-4 h-4" /> KACCO Constitution Articles 5, 6 & 7
+          </div>
+          <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
+            Our Vision, Mission & Core Values
+          </h1>
         </div>
 
+        {/* Vision & Mission Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-            <div className="w-12 h-12 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center font-bold">
+          <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm space-y-4">
+            <div className="w-12 h-12 bg-sky-100 text-sky-600 rounded-2xl flex items-center justify-center font-bold">
+              <Eye className="w-6 h-6" />
+            </div>
+            <h2 className="text-xl font-black text-slate-900">ARTICLE 5: VISION</h2>
+            <p className="text-slate-700 text-sm leading-relaxed">
+              "To enhance inclusive education for all vulnerable children in Karamoja."
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm space-y-4">
+            <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center font-bold">
               <Target className="w-6 h-6" />
             </div>
-            <h3 className="text-2xl font-bold text-slate-900">Our Mission & Vision</h3>
-            <p className="text-slate-600 leading-relaxed">
-              To provide comprehensive education sponsorship from primary through university and nursing levels, while offering guidance, counseling, and economic empowerment to families and out-of-school youth.
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-            <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center font-bold">
-              <ShieldCheck className="w-6 h-6" />
-            </div>
-            <h3 className="text-2xl font-bold text-slate-900">Eradicating Harmful Practices</h3>
-            <p className="text-slate-600 leading-relaxed">
-              We focus heavily on eradicating Female Genital Mutilation (FGM) among the Tepeth girls in Moroto and Napak districts, combating early child marriages, and protecting victims of child trafficking.
+            <h2 className="text-xl font-black text-slate-900">ARTICLE 6: MISSION STATEMENT</h2>
+            <p className="text-slate-700 text-sm leading-relaxed">
+              "To create a conducive socio-economic learning environment for all vulnerable children in Karamoja by ensuring that children access inclusive education without prejudice."
             </p>
           </div>
         </div>
 
-        <div className="bg-sky-50 border border-sky-200 rounded-3xl p-8 sm:p-12 space-y-6">
-          <h3 className="text-2xl font-bold text-slate-900">Get in Touch with Our Team</h3>
-          <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
-            Have questions or want to partner with KACCO? Reach out to us directly through our official email or phone contact.
-          </p>
-          <div className="flex flex-wrap gap-6">
-            <a href="mailto:k.childcare2017@gmail.com" className="flex items-center gap-2 font-bold text-sky-700 bg-white px-4 py-3 rounded-xl border border-sky-200 shadow-sm">
-              <Mail className="w-5 h-5 text-sky-600" />
-              k.childcare2017@gmail.com
-            </a>
-            <a href="tel:+256772997712" className="flex items-center gap-2 font-bold text-emerald-700 bg-white px-4 py-3 rounded-xl border border-emerald-200 shadow-sm">
-              <PhoneCall className="w-5 h-5 text-emerald-600" />
-              0772997712
-            </a>
+        {/* Core Values */}
+        <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm space-y-6">
+          <h2 className="text-2xl font-black text-slate-900">7.3 Core Values</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+              <h3 className="font-bold text-slate-900 text-base">1. Child-Centredness</h3>
+              <p className="text-xs text-slate-600">Upholding the best interests of the child in all planning, decisions, and implementation.</p>
+            </div>
+            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+              <h3 className="font-bold text-slate-900 text-base">2. Justice</h3>
+              <p className="text-xs text-slate-600">Promoting inclusion for all children in education without discrimination.</p>
+            </div>
+            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+              <h3 className="font-bold text-slate-900 text-base">3. Partnership</h3>
+              <p className="text-xs text-slate-600">Working collaboratively with donors, government, local institutions, and communities.</p>
+            </div>
+            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+              <h3 className="font-bold text-slate-900 text-base">4. Teamwork</h3>
+              <p className="text-xs text-slate-600">Promoting full participation in planning, implementation, and decision-making.</p>
+            </div>
+            <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-2">
+              <h3 className="font-bold text-slate-900 text-base">5. Integrity & Accountability</h3>
+              <p className="text-xs text-slate-600">Upholding open, transparent, and honest conduct and financial management.</p>
+            </div>
           </div>
         </div>
       </main>
+
       <Footer />
     </div>
   );
