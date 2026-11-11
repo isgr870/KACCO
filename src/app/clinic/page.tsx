@@ -3,7 +3,7 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Stethoscope, Heart, Award, Users, CheckCircle2, MessageSquare } from "lucide-react";
+import { Stethoscope, Building, MessageSquare, AlertCircle } from "lucide-react";
 
 export default function ClinicPage() {
   return (
@@ -14,45 +14,38 @@ export default function ClinicPage() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-            <Stethoscope className="w-4 h-4" /> Healthcare & Nursing Cadre
+            <Stethoscope className="w-4 h-4" /> Healthcare Initiative & Alumni
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
-            Clinic Project & Alumni Success Stories
+            Proposed Clinic Project & Nursing Cadre
           </h1>
           <p className="text-slate-600 text-base sm:text-lg">
-            Empowering youth through healthcare education and witnessing alumni give back to Karamoja.
+            Preparing medical personnel and seeking capital partners to construct the KACCO Community Clinic.
           </p>
         </div>
 
-        {/* Featured Alumnus: Longole Abraham */}
-        <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-          <div className="md:col-span-1">
-            <div className="w-full h-72 bg-slate-200 rounded-2xl overflow-hidden shadow-md flex items-center justify-center font-bold text-slate-500">
-              {/* Note: You can replace or point src to Abraham's uploaded photo */}
-              <span className="text-xs text-center p-4">Longole Abraham at Matany Hospital</span>
-            </div>
+        {/* Status Notice: Proposed Construction */}
+        <div className="bg-amber-50 border border-amber-200 rounded-3xl p-6 flex items-start gap-4">
+          <div className="w-10 h-10 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center shrink-0">
+            <Building className="w-5 h-5" />
           </div>
-          <div className="md:col-span-2 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold">
-              ★ KACCO Alumnus Success Story
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900">Longole Abraham</h2>
-            <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
-              Longole Abraham is one of KACCO's outstanding scholarship beneficiaries who successfully completed his medical training. Today, he is professionally stationed and <strong>working at Matany Hospital</strong>, providing vital medical care and healing to patients across the Karamoja sub-region.
+          <div className="space-y-1 text-xs sm:text-sm text-slate-700">
+            <h3 className="font-extrabold text-amber-900 text-base">Project Status: Proposed Construction Plan</h3>
+            <p>
+              Physical construction of the KACCO Community Clinic and Pharmacy has not yet commenced. It stands as a major proposed capital development project. We are seeking donors and capital partners to acquire land and construct the facility to serve Moroto and Napak districts.
             </p>
-            <div className="text-xs font-bold text-emerald-600">✓ Giving back to the community through professional healthcare</div>
           </div>
         </div>
 
-        {/* Arnderschous Foundation Partnership Banner */}
+        {/* Active Nursing Students */}
         <div className="bg-gradient-to-br from-emerald-900 to-slate-900 text-white rounded-3xl p-8 sm:p-10 shadow-xl space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="space-y-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/20 text-emerald-300 text-xs font-bold">
-                🇩🇰 International Partnership • Denmark
+                🇩🇰 Arnderschous Foundation • Denmark Partnership
               </div>
               <h2 className="text-2xl sm:text-3xl font-black">
-                19 Sponsored Nursing Students
+                19 Nursing Scholarship Students Active
               </h2>
             </div>
             <a 
@@ -61,13 +54,33 @@ export default function ClinicPage() {
               rel="noopener noreferrer"
               className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs flex items-center gap-2 transition"
             >
-              <MessageSquare className="w-4 h-4" /> WhatsApp Us (0774817858)
+              <MessageSquare className="w-4 h-4" /> Partner / WhatsApp
             </a>
           </div>
 
-          <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
-            Supported by the <strong>Arnderschous Foundation in Denmark</strong>, 19 Karamoja youth have received full scholarships for nursing and medical schools under the leadership of Director <strong>Mama ESTHER ALEPER</strong> and in coordination with local District Health Officers.
+          <p className="text-slate-200 text-sm leading-relaxed">
+            While physical construction is in planning, <strong>19 Karamoja youth</strong> are actively sponsored in nursing institutions thanks to the <strong>Arnderschous Foundation in Denmark</strong>, under Director <strong>Mama ESTHER ALEPER</strong>. These students are undergoing hospital practicals to be ready to staff the clinic upon construction.
           </p>
+        </div>
+
+        {/* Featured Alumnus: Longole Abraham */}
+        <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          <div className="md:col-span-1">
+            <div className="w-full h-64 bg-slate-100 rounded-2xl border border-slate-200 flex flex-col items-center justify-center p-4 text-center space-y-2">
+              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xl">LA</div>
+              <div className="font-bold text-slate-900 text-sm">Longole Abraham</div>
+              <div className="text-xs text-emerald-600 font-semibold">Matany Hospital Staff</div>
+            </div>
+          </div>
+          <div className="md:col-span-2 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold">
+              ★ Beneficiary Success Story
+            </div>
+            <h2 className="text-2xl font-black text-slate-900">Serving Community at Matany Hospital</h2>
+            <p className="text-slate-700 text-sm leading-relaxed">
+              Longole Abraham is a proud KACCO scholarship alumnus who completed his medical training and is now actively serving patients at <strong>Matany Hospital</strong>, providing essential healthcare to the people of Karamoja.
+            </p>
+          </div>
         </div>
       </main>
 
