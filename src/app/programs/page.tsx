@@ -1,73 +1,95 @@
-import Navbar from "../components/Navbar";
-import { GraduationCap, ShieldAlert, Stethoscope, Heart, Trees, Award } from "lucide-react";
+"use client";
+
+import React from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { GraduationCap, BookOpen, Award, CheckCircle2, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function ProgramsPage() {
-  const programs = [
-    {
-      title: "Comprehensive Student Sponsorship",
-      subtitle: "Primary, Secondary, Nursing & University",
-      desc: "Providing full tuition, learning material, and holistic mentorship to children and youth across Karamoja.",
-      icon: GraduationCap,
-      color: "bg-sky-500",
-    },
-    {
-      title: "Anti-FGM & Tepeth Girls Empowerment",
-      subtitle: "Moroto & Napak District Focus",
-      desc: "Eradicating female genital mutilation, early forced marriage, and child trafficking through community action, rescue shelters, and psychosocial guidance.",
-      icon: ShieldAlert,
-      color: "bg-emerald-600",
-    },
-    {
-      title: "Out-of-School Youth Skilling",
-      subtitle: "Vocational & Practical Tools",
-      desc: "Equipping dropouts and unschooled youth with hands-on technical trades, entrepreneurship tools, and economic independence.",
-      icon: Award,
-      color: "bg-emerald-500",
-    },
-    {
-      title: "HIV/AIDS Orphaned Children Care",
-      subtitle: "Housing, Nutrition & Stigma Reduction",
-      desc: "Offering safe housing, medical adherence support, and emotional counseling for orphaned children living with HIV/AIDS.",
-      icon: Heart,
-      color: "bg-sky-700",
-    },
-    {
-      title: "Karamoja Eco-Action & Reforestation",
-      subtitle: "Tree Planting & Climate Sensitization",
-      desc: "Engaging students and parents in tree planting drives, environmental rehabilitation, and climate resilience workshops.",
-      icon: Trees,
-      color: "bg-emerald-700",
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-800 flex flex-col">
       <Navbar />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12 w-full">
+        {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-emerald-600 font-bold uppercase tracking-wider text-xs bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Our Initiatives</span>
-          <h1 className="text-4xl font-black text-slate-900">Transformative Action Across Karamoja</h1>
-          <p className="text-slate-600 text-lg">Explore our core community programs designed to empower and protect the next generation.</p>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-100 text-sky-800 text-xs font-bold uppercase tracking-wider">
+            <GraduationCap className="w-4 h-4" /> 4 Educational Tiers
+          </div>
+          <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
+            Comprehensive Education Pipeline
+          </h1>
+          <p className="text-slate-600 text-base sm:text-lg">
+            Sponsoring children and youth from early primary school all the way through university and professional nursing certification.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {programs.map((p, idx) => {
-            const Icon = p.icon;
-            return (
-              <div key={idx} className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-                <div>
-                  <div className={`w-12 h-12 rounded-xl ${p.color} text-white flex items-center justify-center shadow-md mb-4`}>
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 leading-snug">{p.title}</h3>
-                  <div className="text-xs font-semibold text-emerald-600 mt-1 mb-3">{p.subtitle}</div>
-                  <p className="text-sm text-slate-600 leading-relaxed">{p.desc}</p>
-                </div>
-              </div>
-            );
-          })}
+        {/* 4 Levels Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm space-y-4">
+            <div className="w-12 h-12 bg-sky-100 text-sky-600 rounded-2xl flex items-center justify-center font-bold">
+              1
+            </div>
+            <h3 className="text-xl font-extrabold text-slate-900">Primary Education (P1 - P7)</h3>
+            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Providing school fees, uniforms, scholastic materials, and midday meals for children in Moroto and Napak, laying a solid foundational base for future academic success.
+            </p>
+            <div className="text-xs font-bold text-sky-600">✓ Active across Moroto & Napak primary schools</div>
+          </div>
+
+          <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm space-y-4">
+            <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center font-bold">
+              2
+            </div>
+            <h3 className="text-xl font-extrabold text-slate-900">Secondary Education (S1 - S4)</h3>
+            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Supporting teenagers through O-Level education while providing mentorship and anti-FGM safeguarding guidance to prevent early dropouts and forced marriages.
+            </p>
+            <div className="text-xs font-bold text-emerald-600">✓ Mentorship & Tuition Support</div>
+          </div>
+
+          <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm space-y-4">
+            <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center font-bold">
+              3
+            </div>
+            <h3 className="text-xl font-extrabold text-slate-900">Vocational & Nursing Certification</h3>
+            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Equipping unschooled youth and young women with vocational technical skills and nursing diplomas. Graduates directly staff the KACCO community clinic project.
+            </p>
+            <div className="text-xs font-bold text-indigo-600">✓ Direct Pipeline to Clinic Employment</div>
+          </div>
+
+          <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm space-y-4">
+            <div className="w-12 h-12 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center font-bold">
+              4
+            </div>
+            <h3 className="text-xl font-extrabold text-slate-900">University Degree Programs</h3>
+            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+              Funding higher education scholarships for exceptional students pursuing degrees in education, public health, social work, and community development.
+            </p>
+            <div className="text-xs font-bold text-amber-700">✓ Higher Education Scholarships</div>
+          </div>
         </div>
-      </div>
+
+        {/* CTA */}
+        <div className="bg-gradient-to-r from-sky-900 to-emerald-900 rounded-3xl p-8 text-white text-center space-y-6">
+          <h3 className="text-2xl sm:text-3xl font-black">Ready to Sponsor a Student?</h3>
+          <p className="text-slate-200 text-sm max-w-xl mx-auto">
+            Your support changes generations. Access the admin portal or contact our desk to sponsor a child's education today.
+          </p>
+          <div className="flex justify-center gap-4">
+            <Link 
+              href="/clinic" 
+              className="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm rounded-xl transition shadow-md"
+            >
+              Contact & Donate
+            </Link>
+          </div>
+        </div>
+      </main>
+
+      <Footer />
     </div>
   );
 }
