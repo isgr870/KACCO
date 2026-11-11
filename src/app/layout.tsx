@@ -1,22 +1,19 @@
-import type { Metadata } from "metadata";
+import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "KACCO - Karamoja Child Care Organization",
-  description: "Empowering children, youth, and communities in Karamoja through education, anti-FGM advocacy, skilling, and healthcare.",
+  title: "Karamoja Child Care Organization (KACCO)",
+  description: "Empowering children, youth, and communities in Moroto and Napak, Uganda.",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
-      <head>
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-      </head>
-      <body className="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
+      <body className="antialiased bg-slate-50 text-slate-900">
         {children}
       </body>
     </html>

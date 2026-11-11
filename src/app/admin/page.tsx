@@ -12,7 +12,6 @@ import {
   X,
   Building2,
   Globe,
-  Storage,
   Trash2
 } from "lucide-react";
 
