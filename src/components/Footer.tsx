@@ -3,6 +3,8 @@ import Link from "next/link";
 import { MapPin, Globe, ShieldCheck } from "lucide-react";
 
 export default function Footer() {
+  const currentYear = 2026;
+
   return (
     <footer className="bg-slate-900 text-slate-300 font-sans border-t border-slate-800 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-10">
@@ -26,7 +28,7 @@ export default function Footer() {
           <ul className="space-y-2 text-xs font-medium">
             <li><Link href="/" className="hover:text-sky-400 transition">Homepage</Link></li>
             <li><Link href="/programs" className="hover:text-sky-400 transition">Education & Programs</Link></li>
-            <li><Link href="/clinic" className="hover:text-sky-400 transition">Clinic & Pharmacy Project</Link></li>
+            <li><Link href="/clinic" className="hover:text-sky-400 transition">Clinic & Nursing</Link></li>
             <li><Link href="/environment" className="hover:text-sky-400 transition">Safeguarding & Environment</Link></li>
           </ul>
         </div>
@@ -54,7 +56,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-slate-800 py-6 text-center text-xs text-slate-500 font-medium">
-        © {new Date().getFullYear()} Karamoja Child Care Organization (KACCO). All rights reserved.
+        © {currentYear} Karamoja Child Care Organization (KACCO). All rights reserved.
       </div>
     </footer>
   );
