@@ -3,7 +3,8 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Stethoscope, Building, MessageSquare, AlertCircle } from "lucide-react";
+import PhotoGallery from "@/components/PhotoGallery";
+import { Stethoscope, Building, MessageSquare } from "lucide-react";
 
 export default function ClinicPage() {
   return (
@@ -37,7 +38,7 @@ export default function ClinicPage() {
           </div>
         </div>
 
-        {/* Active Nursing Students */}
+        {/* Active Nursing Students Banner */}
         <div className="bg-gradient-to-br from-emerald-900 to-slate-900 text-white rounded-3xl p-8 sm:p-10 shadow-xl space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="space-y-2">
@@ -54,7 +55,7 @@ export default function ClinicPage() {
               rel="noopener noreferrer"
               className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs flex items-center gap-2 transition"
             >
-              <MessageSquare className="w-4 h-4" /> Partner / WhatsApp
+              <MessageSquare className="w-4 h-4" /> WhatsApp Us (0774817858)
             </a>
           </div>
 
@@ -66,22 +67,28 @@ export default function ClinicPage() {
         {/* Featured Alumnus: Longole Abraham */}
         <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <div className="md:col-span-1">
-            <div className="w-full h-64 bg-slate-100 rounded-2xl border border-slate-200 flex flex-col items-center justify-center p-4 text-center space-y-2">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xl">LA</div>
-              <div className="font-bold text-slate-900 text-sm">Longole Abraham</div>
-              <div className="text-xs text-emerald-600 font-semibold">Matany Hospital Staff</div>
+            <div className="w-full h-72 bg-slate-100 rounded-2xl border border-slate-200 overflow-hidden shadow-md">
+              <img 
+                src="/IMG-20261111-WA0043.jpg" 
+                alt="Longole Abraham at Matany Hospital" 
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
           <div className="md:col-span-2 space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold">
               ★ Beneficiary Success Story
             </div>
-            <h2 className="text-2xl font-black text-slate-900">Serving Community at Matany Hospital</h2>
-            <p className="text-slate-700 text-sm leading-relaxed">
-              Longole Abraham is a proud KACCO scholarship alumnus who completed his medical training and is now actively serving patients at <strong>Matany Hospital</strong>, providing essential healthcare to the people of Karamoja.
+            <h2 className="text-2xl font-black text-slate-900">Longole Abraham — Matany Hospital</h2>
+            <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
+              Longole Abraham is a proud KACCO scholarship alumnus who completed his medical training and is now actively serving patients at <strong>Matany Hospital</strong>, providing essential healthcare and healing to the people of Karamoja.
             </p>
+            <div className="text-xs font-bold text-emerald-600">✓ KACCO Scholarship Beneficiary in Active Medical Practice</div>
           </div>
         </div>
+
+        {/* Full Photo Gallery */}
+        <PhotoGallery />
       </main>
 
       <Footer />
