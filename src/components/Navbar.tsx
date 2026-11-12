@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Menu, X, MessageSquare, ShieldCheck } from "lucide-react";
+import { Menu, X, MessageSquare } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,14 +22,13 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Links */}
+          {/* Desktop Links (Admin hidden from public view) */}
           <div className="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-slate-600">
             <Link href="/" className="hover:text-sky-600 transition">Home</Link>
             <Link href="/about" className="hover:text-sky-600 transition">About Us</Link>
             <Link href="/programs" className="hover:text-sky-600 transition">Programs</Link>
             <Link href="/clinic" className="hover:text-sky-600 transition">Clinic & Nursing</Link>
             <Link href="/environment" className="hover:text-sky-600 transition">Safeguarding</Link>
-            <Link href="/admin" className="hover:text-sky-600 transition text-emerald-700">Admin Portal</Link>
           </div>
 
           {/* Action Button */}
@@ -57,7 +56,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* Mobile Dropdown Menu (Admin link excluded) */}
       {isOpen && (
         <div className="md:hidden bg-white border-b border-slate-200 px-6 py-6 space-y-4 shadow-xl">
           <div className="flex flex-col space-y-3 text-sm font-bold text-slate-700">
@@ -65,8 +64,7 @@ export default function Navbar() {
             <Link href="/about" onClick={() => setIsOpen(false)} className="py-2 border-b border-slate-100 hover:text-sky-600">About Us & History</Link>
             <Link href="/programs" onClick={() => setIsOpen(false)} className="py-2 border-b border-slate-100 hover:text-sky-600">Programs & Sponsorship</Link>
             <Link href="/clinic" onClick={() => setIsOpen(false)} className="py-2 border-b border-slate-100 hover:text-sky-600">Clinic & Nursing</Link>
-            <Link href="/environment" onClick={() => setIsOpen(false)} className="py-2 border-b border-slate-100 hover:text-sky-600">Safeguarding & Environment</Link>
-            <Link href="/admin" onClick={() => setIsOpen(false)} className="py-2 text-emerald-700">Admin Portal (CMS)</Link>
+            <Link href="/environment" onClick={() => setIsOpen(false)} className="py-2 border-slate-100 hover:text-sky-600">Safeguarding & Environment</Link>
           </div>
 
           <div className="pt-2">

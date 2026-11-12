@@ -3,22 +3,19 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ShieldCheck, Lock, Save, RefreshCw, CheckCircle2, DollarSign, Users, Home } from "lucide-react";
+import { ShieldCheck, Lock, Save, CheckCircle2, DollarSign, Users, Home } from "lucide-react";
 
 export default function AdminPortal() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passcode, setPasscode] = useState("");
   const [savedMessage, setSavedMessage] = useState("");
 
-  // Editable KACCO Stats & Data State
   const [stats, setStats] = useState({
     primaryPupils: "24",
     secondaryStudents: "23",
     nursingStudents: "19",
     residentChildren: "18",
-    primaryTermFee: "250,000",
     primaryAnnualFee: "750,000",
-    secondaryTermFee: "650,000",
     secondaryAnnualFee: "1,950,000",
     monthlyFeedingBudget: "2,000,000",
     clinicStatus: "Proposed Capital Construction Plan (Seeking Donors)"
@@ -37,18 +34,17 @@ export default function AdminPortal() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Default admin passcode or '0774817858'
-    if (passcode === "0774817858" || passcode === "admin123") {
+    if (passcode === "KACCO2026") {
       setIsAuthenticated(true);
     } else {
-      alert("Invalid Passcode. Use your WhatsApp contact number (0774817858) or admin123");
+      alert("Invalid administrative passcode.");
     }
   };
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     localStorage.setItem("kacco_admin_data", JSON.stringify(stats));
-    setSavedMessage("Changes saved successfully! Live site data updated.");
+    setSavedMessage("Changes saved successfully! Live site records updated.");
     setTimeout(() => setSavedMessage(""), 4000);
   };
 
@@ -58,26 +54,26 @@ export default function AdminPortal() {
         <Navbar />
         <main className="flex-1 flex items-center justify-center px-4 py-12">
           <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-10 max-w-md w-full shadow-sm space-y-6 text-center">
-            <div className="w-16 h-16 bg-sky-100 text-sky-600 rounded-2xl flex items-center justify-center mx-auto">
+            <div className="w-16 h-16 bg-slate-100 text-slate-700 rounded-2xl flex items-center justify-center mx-auto">
               <Lock className="w-8 h-8" />
             </div>
             <div className="space-y-2">
-              <h1 className="text-2xl font-black text-slate-900">KACCO Admin Portal</h1>
-              <p className="text-xs text-slate-500">Enter your administrative passcode to manage site records.</p>
+              <h1 className="text-2xl font-black text-slate-900">Restricted Admin Portal</h1>
+              <p className="text-xs text-slate-500">Enter secure administrative passcode to proceed.</p>
             </div>
             <form onSubmit={handleLogin} className="space-y-4">
               <input
                 type="password"
-                placeholder="Enter passcode (e.g. 0774817858)"
+                placeholder="Enter passcode"
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
                 className="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 text-center font-bold tracking-widest"
               />
               <button
                 type="submit"
-                className="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition shadow-md"
+                className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition shadow-md"
               >
-                Access Dashboard
+                Authenticate
               </button>
             </form>
             <div className="text-[11px] text-slate-400">
@@ -98,7 +94,7 @@ export default function AdminPortal() {
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold">
-              <ShieldCheck className="w-4 h-4" /> Admin Session Active
+              <ShieldCheck className="w-4 h-4" /> Secure Admin Session Active
             </div>
             <h1 className="text-3xl font-black text-slate-900 mt-2">KACCO Content Management</h1>
           </div>
@@ -118,7 +114,6 @@ export default function AdminPortal() {
         )}
 
         <form onSubmit={handleSave} className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm space-y-8">
-          {/* Enrolment Stats */}
           <div className="space-y-4">
             <h2 className="text-lg font-black text-slate-900 flex items-center gap-2">
               <Users className="w-5 h-5 text-sky-600" /> Beneficiary Enrolment Numbers
@@ -143,7 +138,7 @@ export default function AdminPortal() {
                 />
               </div>
               <div className="space-y-1">
-                <label className="text-xs font-bold text-slate-700">Nursing Scholars (Denmark)</label>
+                <label className="text-xs font-bold text-slate-700">Nursing Scholars</label>
                 <input
                   type="text"
                   value={stats.nursingStudents}
@@ -152,7 +147,7 @@ export default function AdminPortal() {
                 />
               </div>
               <div className="space-y-1">
-                <label className="text-xs font-bold text-slate-700">Resident Children (Housed)</label>
+                <label className="text-xs font-bold text-slate-700">Resident Children</label>
                 <input
                   type="text"
                   value={stats.residentChildren}
@@ -165,10 +160,9 @@ export default function AdminPortal() {
 
           <hr className="border-slate-100" />
 
-          {/* Financials & Sponsorship */}
           <div className="space-y-4">
             <h2 className="text-lg font-black text-slate-900 flex items-center gap-2">
-              <DollarSign className="w-5 h-5 text-emerald-600" /> Sponsorship Fees & Feeding Budgets (UGX)
+              <DollarSign className="w-5 h-5 text-emerald-600" /> Sponsorship & Feeding Rates (UGX)
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1">
@@ -203,7 +197,6 @@ export default function AdminPortal() {
 
           <hr className="border-slate-100" />
 
-          {/* Clinic & Project Status */}
           <div className="space-y-4">
             <h2 className="text-lg font-black text-slate-900 flex items-center gap-2">
               <Home className="w-5 h-5 text-amber-600" /> Clinic Project Status Notice
