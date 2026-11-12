@@ -1,12 +1,31 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import PhotoGallery from "@/components/PhotoGallery";
-import { Stethoscope, Building, MessageSquare } from "lucide-react";
+import { Stethoscope, Building, MessageSquare, Award } from "lucide-react";
 
 export default function ClinicPage() {
+  const [cmsData, setCmsData] = useState({
+    nursingStudents: "19",
+    clinicStatus: "Proposed Capital Construction Plan (Seeking Donors)",
+    featuredAlumnusName: "Longole Abraham",
+    featuredAlumnusRole: "Matany Hospital Healthcare Worker",
+    featuredAlumnusStory: "Longole Abraham is a proud KACCO scholarship alumnus who completed his medical training and is now actively serving patients at Matany Hospital, providing essential healthcare and healing to the people of Karamoja."
+  });
+
+  useEffect(() => {
+    const stored = localStorage.getItem("kacco_admin_cms");
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        setCmsData(prev => ({ ...prev, ...parsed }));
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800 flex flex-col">
       <Navbar />
@@ -25,16 +44,14 @@ export default function ClinicPage() {
           </p>
         </div>
 
-        {/* Status Notice: Proposed Construction */}
-        <div className="bg-amber-50 border border-amber-200 rounded-3xl p-6 flex items-start gap-4">
+        {/* Status Notice */}
+        <div className="bg-amber-50 border border-amber-200 rounded-3xl p-6 flex items-start gap-4 shadow-sm">
           <div className="w-10 h-10 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center shrink-0">
             <Building className="w-5 h-5" />
           </div>
           <div className="space-y-1 text-xs sm:text-sm text-slate-700">
             <h3 className="font-extrabold text-amber-900 text-base">Project Status: Proposed Construction Plan</h3>
-            <p>
-              Physical construction of the KACCO Community Clinic and Pharmacy has not yet commenced. It stands as a major proposed capital development project. We are seeking donors and capital partners to acquire land and construct the facility to serve Moroto and Napak districts.
-            </p>
+            <p>{cmsData.clinicStatus}</p>
           </div>
         </div>
 
@@ -43,10 +60,10 @@ export default function ClinicPage() {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="space-y-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/20 text-emerald-300 text-xs font-bold">
-                🇩🇰 Arnderschous Foundation • Denmark Partnership
+                Arnderschous Foundation • Denmark Partnership
               </div>
               <h2 className="text-2xl sm:text-3xl font-black">
-                19 Nursing Scholarship Students Active
+                {cmsData.nursingStudents} Active Nursing Scholarship Students
               </h2>
             </div>
             <a 
@@ -58,16 +75,15 @@ export default function ClinicPage() {
               <MessageSquare className="w-4 h-4" /> WhatsApp Us (0774817858)
             </a>
           </div>
-
           <p className="text-slate-200 text-sm leading-relaxed">
-            While physical construction is in planning, <strong>19 Karamoja youth</strong> are actively sponsored in nursing institutions thanks to the <strong>Arnderschous Foundation in Denmark</strong>, under Director <strong>Mama ESTHER ALEPER</strong>. These students are undergoing hospital practicals to be ready to staff the clinic upon construction.
+            While physical construction is in planning, <strong>{cmsData.nursingStudents} Karamoja youth</strong> are actively sponsored in nursing institutions thanks to the <strong>Arnderschous Foundation in Denmark</strong>, under Director <strong>Mama ESTHER ALEPER</strong>. These students undergo rigorous clinical hospital rotations to staff the future clinic.
           </p>
         </div>
 
         {/* Featured Alumnus: Longole Abraham */}
         <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <div className="md:col-span-1">
-            <div className="w-full h-72 bg-slate-100 rounded-2xl border border-slate-200 overflow-hidden shadow-md">
+            <div className="w-full h-80 bg-slate-100 rounded-2xl border border-slate-200 overflow-hidden shadow-md">
               <img 
                 src="/IMG-20261111-WA0043.jpg" 
                 alt="Longole Abraham at Matany Hospital" 
@@ -77,18 +93,41 @@ export default function ClinicPage() {
           </div>
           <div className="md:col-span-2 space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold">
-              ★ Beneficiary Success Story
+              <Award className="w-4 h-4" /> Featured Alumnus Success Story
             </div>
-            <h2 className="text-2xl font-black text-slate-900">Longole Abraham — Matany Hospital</h2>
+            <h2 className="text-2xl font-black text-slate-900">{cmsData.featuredAlumnusName} — {cmsData.featuredAlumnusRole}</h2>
             <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
-              Longole Abraham is a proud KACCO scholarship alumnus who completed his medical training and is now actively serving patients at <strong>Matany Hospital</strong>, providing essential healthcare and healing to the people of Karamoja.
+              {cmsData.featuredAlumnusStory}
             </p>
-            <div className="text-xs font-bold text-emerald-600">✓ KACCO Scholarship Beneficiary in Active Medical Practice</div>
+            <div className="text-xs font-bold text-emerald-600">KACCO Scholarship Beneficiary in Active Medical Practice</div>
           </div>
         </div>
 
-        {/* Full Photo Gallery */}
-        <PhotoGallery />
+        {/* Clinical Training & Ward Rotations */}
+        <div className="space-y-6">
+          <h2 className="text-2xl font-black text-slate-900">Clinical Training & Ward Rotations</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm group">
+              <div className="h-64 overflow-hidden bg-slate-100">
+                <img src="/IMG-20261111-WA0044.jpg" alt="Clinical Practice" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+              </div>
+              <div className="p-4 space-y-1">
+                <h3 className="font-extrabold text-slate-900 text-sm">Hospital Ward Practice</h3>
+                <p className="text-xs text-slate-600">Sponsored nursing students gaining hands-on clinical experience in regional hospitals.</p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm group">
+              <div className="h-64 overflow-hidden bg-slate-100">
+                <img src="/IMG-20261111-WA0045.jpg" alt="Ward Documentation" className="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+              </div>
+              <div className="p-4 space-y-1">
+                <h3 className="font-extrabold text-slate-900 text-sm">Patient Care & Records</h3>
+                <p className="text-xs text-slate-600">Nursing trainees completing medical documentation and patient management rotations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
 
       <Footer />
