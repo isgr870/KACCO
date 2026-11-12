@@ -3,22 +3,52 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ShieldCheck, Heart, Eye, Target, Award, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, Eye, Target, History, HeartHandshake, MapPin } from "lucide-react";
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800 flex flex-col">
       <Navbar />
 
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12 w-full">
+      <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12 w-full">
         {/* Title */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-100 text-sky-800 text-xs font-bold uppercase tracking-wider">
-            <ShieldCheck className="w-4 h-4" /> KACCO Constitution Articles 5, 6 & 7
+            <ShieldCheck className="w-4 h-4" /> Established 2006 • Napak & Moroto
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
-            Our Vision, Mission & Core Values
+            Our History, Vision & Mission
           </h1>
+          <p className="text-slate-600 text-base">
+            Rooted in resilience, founded to protect vulnerable children across the Karamoja sub-region.
+          </p>
+        </div>
+
+        {/* Historical Background Section */}
+        <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-10 shadow-sm space-y-6">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center font-bold">
+              <History className="w-6 h-6" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-black text-slate-900">Historical Background & Justification</h2>
+              <div className="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
+                <MapPin className="w-3.5 h-3.5 text-amber-600" /> Kangole Parish, Ngoleriet Sub-county, Napak District (Est. 2006)
+              </div>
+            </div>
+          </div>
+
+          <div className="prose prose-slate max-w-none text-slate-700 text-sm sm:text-base leading-relaxed space-y-4">
+            <p>
+              Karamoja Child Care Organization (KACCO) was born in 2006 in Kangole Parish, Ngoleriet Sub-county, Napak District, at the height of severe insecurity and cattle rustling which was the order of the day. During this turbulent period, many people lost their lives—mostly men involved in pastoral conflicts. As a result, countless orphans were left stranded and homeless without anybody to care for them.
+            </p>
+            <p>
+              Another compounding crisis that accelerated KACCO's formation was the prevalence of HIV/AIDS, which devastated the region and left many children orphaned. Furthermore, the loss of livestock—the economic backbone and source of survival for the Karimojong—left families in extreme poverty without any economic activity to depend on.
+            </p>
+            <p>
+              Consequently, many children became victims of acute vulnerability, losing their rights to food, education, health, and shelter. This urgent reality compelled the founders of Karamoja Child Care Organization to establish an alternative pathway of hope, ensuring that vulnerable children find an opportunity to live a meaningful life and thrive toward a better future.
+            </p>
+          </div>
         </div>
 
         {/* Vision & Mission Grid */}
