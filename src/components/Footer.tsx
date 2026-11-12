@@ -27,6 +27,7 @@ export default function Footer() {
           <h4 className="text-xs font-extrabold uppercase text-white tracking-wider">Quick Navigation</h4>
           <ul className="space-y-2 text-xs font-medium">
             <li><Link href="/" className="hover:text-sky-400 transition">Homepage</Link></li>
+            <li><Link href="/about" className="hover:text-sky-400 transition">About Us & History</Link></li>
             <li><Link href="/programs" className="hover:text-sky-400 transition">Education & Programs</Link></li>
             <li><Link href="/clinic" className="hover:text-sky-400 transition">Clinic & Nursing</Link></li>
             <li><Link href="/environment" className="hover:text-sky-400 transition">Safeguarding & Environment</Link></li>
@@ -45,12 +46,12 @@ export default function Footer() {
         <div className="space-y-3">
           <h4 className="text-xs font-extrabold uppercase text-white tracking-wider">Support & Partnership</h4>
           <p className="text-xs text-slate-400">
-            To sponsor a child, support the clinic, or partner with our programs, contact our administrative desk.
+            To sponsor a child, support the clinic, or partner with our programs, contact our administrative desk directly via WhatsApp.
           </p>
           <div className="pt-2">
-            <Link href="/admin" className="inline-block px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs rounded-xl transition border border-slate-700">
-              Admin Portal Login →
-            </Link>
+            <a href="https://wa.me/256774817858" target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition shadow-sm">
+              WhatsApp Desk (0774817858) →
+            </a>
           </div>
         </div>
       </div>
