@@ -1,59 +1,60 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Globe, ArrowLeft, Calendar, Tag } from "lucide-react";
 
-export default function PostDetail() {
+function PostDetailContent() {
   const params = useParams();
   const id = params?.id;
 
   const [post, setPost] = useState<any>(null);
 
   useEffect(() => {
-    // Default fallback posts if not found in localStorage
     const defaultPosts = [
-      { 
-        id: "post-1", 
-        title: "Moroto Anti-FGM Community Outreach Success", 
-        category: "Advocacy", 
-        date: "2026-11-10", 
+      {
+        id: "post-1",
+        title: "Moroto Anti-FGM Community Outreach Success",
+        category: "Advocacy",
+        date: "2026-11-10",
         status: "Published",
         content: "KACCO teams successfully conducted community dialogue sessions across Moroto district, engaging elders, mothers, and local youth leaders. Through intensive human rights advocacy and community education, families pledged total commitment to abandoning female genital mutilation (FGM) and protecting young girls across Karamoja."
       },
-      { 
-        id: "post-2", 
-        title: "Term 3 University & Nursing Scholarship Applications Open", 
-        category: "Education", 
-        date: "2026-11-05", 
+      {
+        id: "post-2",
+        title: "19 Nursing Scholarships Supported by Arnderschous Foundation",
+        category: "Education",
+        date: "2026-11-05",
         status: "Published",
-        content: "Applications for the Term 3 scholarship cycle are officially open for deserving students across Moroto and Napak districts. Priority is given to young women entering our nursing certificate pipeline to support the upcoming KACCO community clinic."
+        content: "Through the generous partnership of the Arnderschous Foundation in Denmark, 19 Karamoja youth are currently enrolled in nursing schools and completing clinical hospital placements under the mentorship of Director Mama Esther Aleper."
       },
-      { 
-        id: "post-3", 
-        title: "KACCO Clinic Foundation Groundbreaking Ceremony", 
-        category: "Healthcare", 
-        date: "2026-10-28", 
+      {
+        id: "post-3",
+        title: "Proposed KACCO Community Clinic & Pharmacy Initiative",
+        category: "Healthcare",
+        date: "2026-10-28",
         status: "Draft",
-        content: "Preparations are underway for the physical groundbreaking of the KACCO Community Clinic and Pharmacy. Alumni nurses trained through our vocational programs will spearhead operations."
+        content: "KACCO is actively seeking capital partners and land acquisition support for its proposed Community Clinic and Pharmacy in Karamoja, which will be staffed by our growing cohort of sponsored nursing graduates."
       }
     ];
 
     const savedPosts = localStorage.getItem("kacco_posts");
     const allPosts = savedPosts ? JSON.parse(savedPosts) : defaultPosts;
     const found = allPosts.find((p: any) => p.id === id);
-    
+
     if (found) {
       setPost(found);
     } else {
-      setPost(allPosts[0]); // fallback
+      setPost(allPosts[0]);
     }
   }, [id]);
 
-  if (!post) return <div className="min-h-screen flex items-center justify-center font-sans">Loading article...</div>;
+  if (!post) {
+    return <div className="min-h-screen flex items-center justify-center font-sans">Loading article...</div>;
+  }
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-800 flex flex-col">
@@ -97,5 +98,13 @@ export default function PostDetail() {
 
       <Footer />
     </div>
+  );
+}
+
+export default function PostDetail() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-sans">Loading article...</div>}>
+      <PostDetailContent />
+    </Suspense>
   );
 }
