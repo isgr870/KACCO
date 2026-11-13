@@ -11,7 +11,8 @@ export default function ClinicPage() {
     clinicStatus: "Proposed Capital Construction Plan (Seeking Donors)",
     featuredAlumnusName: "Longole Abraham",
     featuredAlumnusRole: "Matany Hospital Healthcare Worker",
-    featuredAlumnusStory: "Longole Abraham is a proud KACCO scholarship alumnus who completed his medical training and is now actively serving patients at Matany Hospital, providing essential healthcare and healing to the people of Karamoja."
+    featuredAlumnusStory: "Longole Abraham is a proud KACCO scholarship alumnus who completed his medical training and is now actively serving patients at Matany Hospital, providing essential healthcare and healing to the people of Karamoja.",
+    featuredAlumnusImage: "/IMG-20261111-WA0043.jpg"
   });
 
   useEffect(() => {
@@ -80,26 +81,26 @@ export default function ClinicPage() {
           </p>
         </div>
 
-        {/* Featured Alumnus: Longole Abraham */}
+        {/* Featured Alumnus (Dynamic from Admin CMS) */}
         <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <div className="md:col-span-1">
             <div className="w-full h-80 bg-slate-100 rounded-2xl border border-slate-200 overflow-hidden shadow-md">
               <img 
-                src="/IMG-20261111-WA0043.jpg" 
-                alt="Longole Abraham at Matany Hospital" 
+                src={cmsData.featuredAlumnusImage} 
+                alt={cmsData.featuredAlumnusName} 
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
           <div className="md:col-span-2 space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold">
-              <Award className="w-4 h-4" /> Featured Alumnus Success Story
+              <Award className="w-4 h-4" /> Featured Success Story
             </div>
             <h2 className="text-2xl font-black text-slate-900">{cmsData.featuredAlumnusName} — {cmsData.featuredAlumnusRole}</h2>
             <p className="text-slate-700 text-sm sm:text-base leading-relaxed">
               {cmsData.featuredAlumnusStory}
             </p>
-            <div className="text-xs font-bold text-emerald-600">KACCO Scholarship Beneficiary in Active Medical Practice</div>
+            <div className="text-xs font-bold text-emerald-600">✓ KACCO Scholarship Beneficiary in Active Medical Practice</div>
           </div>
         </div>
 
