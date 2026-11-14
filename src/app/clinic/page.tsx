@@ -4,8 +4,6 @@ import Footer from "@/components/Footer";
 import { getSiteData } from "@/actions/cms";
 import { Stethoscope, Building, MessageSquare, Award } from "lucide-react";
 
-export const dynamic = "force-dynamic";
-
 export default async function ClinicPage() {
   const { stats, articles } = await getSiteData();
   const successStories = articles.filter((a) => a.category === "Success Story");
@@ -61,7 +59,6 @@ export default async function ClinicPage() {
           </p>
         </div>
 
-        {/* Dynamic Success Stories from Database */}
         {successStories.length > 0 ? (
           <div className="space-y-6">
             {successStories.map((story) => (
